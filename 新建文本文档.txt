@@ -31,6 +31,10 @@
                         }
                         $(".user_list").append($li);
                 }, "json")  //根据好友id获取好友信息psot
+
+
+
+
 wwwwwwwwwwwwwwwwwww
+
 aaaaaaaaaaaaa
-aaaaaa
