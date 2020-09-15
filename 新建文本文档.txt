@@ -1,0 +1,33 @@
+  		var beizhu = "";
+                if (typeof(reslut.data[i].beizhu) === "undefined") {
+                    beizhu = "";
+                } else {
+                    beizhu = reslut.data[i].beizhu;
+                }
+
+                var jsonhao = {
+                    "aid":1,
+                    "haoid": reslut.data[i].haoid
+                }
+                 hao =reslut.data[i].haoid;
+                console.log(hao)
+                $.post("/lvSelectHaoXinXi", jsonhao, function (reslutHao) {
+                    console.log(i)
+                    var xingQi;
+                    var neiro="";
+                    var createdate;
+                        if(typeof(reslutHao.data2.xiaoXis[0].createdate)==="undefined"){
+                            xingQi="未联系";
+                        }else{
+                            neiro=reslutHao.data2.xiaoXis[0].neirong;
+                            createdate=reslutHao.data2.xiaoXis[0].createdate;
+                            xingQi=date(createdate);
+                        }
+                        var $li;
+                        if (beizhu == "") {
+                            $li = $('<li class="user_li" onclick="dian(event)"><div class="user_head"><input hidden value='+ reslut.data[0].haoid+'><img src="/static/images/head/15.jpg"/></div><div class="user_text"> <p class="user_name">' + reslutHao.data.nickname + '</p> <p class="user_message">'+neiro+'</p></div> <div class="user_time">'+xingQi+'</div> </li>');
+                        } else {
+                            $li = $('<li class="user_li" onclick="dian(event)"><div class="user_head"><input hidden value='+ reslut.data[0].haoid+'><img src="/static/images/head/15.jpg"/></div><div class="user_text"> <p class="user_name">' + beizhu + '</p> <p class="user_message">'+neiro+'</p> </div> <div class="user_time">'+xingQi+'</div> </li>');
+                        }
+                        $(".user_list").append($li);
+                }, "json")  //根据好友id获取好友信息psot
