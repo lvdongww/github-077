@@ -1,4 +1,4 @@
-package com.kgc.github077;
+package com.kgc;
 
 /**
  * Hello world!
